@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: stg_schemes_master
+    description: This view has information about the MF schemes, the code, name, category and derived column called plan type
+
+    columns:
+      - name: scheme_code
+        description: This is a unique identifier for a MF scheme
+        tests:
+          - unique
+          - not_null
+      - name: plan_type
+        description: Derived column from scheme name
+        tests:
+          - accepted_values:
+              arguments:
+                values: ["DIRECT", "REGULAR", "UNCLASSIFIED"]
+
+  - name: stg_nav_history
+    description: This view has nav value for each date for each scheme code
+
+    columns:
+      - name: scheme_code
+        tests:
+          - not_null
+      - name: nav_date
+        tests:
+          - not_null
+      - name: nav
+        tests:
+          - not_null
