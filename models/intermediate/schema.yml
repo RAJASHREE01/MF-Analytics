@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: int_scheme_nav_enriched
+    description: intermediate model with nav and schema table 
+    columns:
+      - name: scheme_code
+        tests:
+          - not_null
+      - name: nav_date
+        tests:
+          - not_null
+      - name: nav
+        tests:
+          - not_null
+      - name: plan_type
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["DIRECT", "REGULAR", "UNCLASSIFIED"]

@@ -1,0 +1,1 @@
+select distinct plan_type from {{ ref('int_scheme_nav_enriched') }}
