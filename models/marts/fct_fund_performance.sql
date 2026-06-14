@@ -101,9 +101,9 @@ final as (
         nd.nav_1y,
         nd.nav_3y,
         nd.nav_5y,
-        round(({{ dbt_utils.safe_divide('(nv.latest_nav - nd.nav_1y)','nd.nav_1y') }}) * 100, 2) as return_1y,
-        round(({{ dbt_utils.safe_divide('(nv.latest_nav - nd.nav_3y)','nd.nav_3y') }}) * 100, 2) as return_3y,
-        round(({{ dbt_utils.safe_divide('(nv.latest_nav - nd.nav_5y)','nd.nav_5y') }}) * 100, 2) as return_5y,
+        round(({{ safe_divide('(nv.latest_nav - nd.nav_1y)','nd.nav_1y') }}) * 100, 2) as return_1y,
+        round(({{ safe_divide('(nv.latest_nav - nd.nav_3y)','nd.nav_3y') }}) * 100, 2) as return_3y,
+        round(({{ safe_divide('(nv.latest_nav - nd.nav_5y)','nd.nav_5y') }}) * 100, 2) as return_5y,
         at.all_time_high,
         at.all_time_low
     from nav_at_dates nd
