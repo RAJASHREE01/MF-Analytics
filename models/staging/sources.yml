@@ -1,0 +1,26 @@
+version: 2
+sources:
+  - name: raw
+    database: MF_ANALYTICS
+    schema: RAw
+    tables:
+      - name: schemes_master
+        description: A list of all scheme details of the mutual funds fetched via mfapi.in
+        columns:
+          - name: scheme_code
+            description: active scheme codes of the MFs. 
+            tests:
+              - not_null
+              - unique          
+      - name: nav_history
+        description: list of nav values on a particular date for all schemes
+        columns:
+          - name: scheme_code
+            tests:
+              - not_null
+          - name: nav_date
+            tests:
+              - not_null
+          - name: nav
+            tests:
+              - not_null
